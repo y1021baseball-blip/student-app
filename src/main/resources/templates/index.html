@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学生管理</title>
+</head>
+<body>
+
+<h1>学生管理アプリ</h1>
+
+<form th:action="@{/add}" method="post" th:object="${student}">
+    名前: <input type="text" th:field="*{name}" /><br>
+    国語: <input type="number" th:field="*{japanese}" /><br>
+    数学: <input type="number" th:field="*{math}" /><br>
+    英語: <input type="number" th:field="*{english}" /><br>
+    理科: <input type="number" th:field="*{science}" /><br>
+    社会: <input type="number" th:field="*{social}" /><br>
+    <button type="submit">登録</button>
+</form>
+
+<hr>
+
+<h2>学生一覧</h2>
+<ul>
+    <li th:each="s, stat : ${students}">
+        順位:<span th:text ="${stat.index +1}"></span>位<br>
+        名前:<span th:text="${s.name}"></span> <br>
+        
+        国語:<span th:text="${s.japanese}"></span>
+        数学:<span th:text="${s.math}"></span>
+        英語:<span th:text="${s.english}"></span>
+        理科:<span th:text="${s.science}"></span>
+        社会:<span th:text="${s.social}"></span>
+
+        平均:<span th:text="${s.average}"></span>
+
+        <a th:href="@{/delete(index=${stat.index})}">削除</a>
+    </li>
+</ul>
+
+</body>
+</html>
