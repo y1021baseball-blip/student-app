@@ -4,39 +4,39 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
 public class HomeController {
 
-    List<Student> studentList = new ArrayList<>();
+    private final StudentRepository repository;
+
+    public HomeController(StudentRepository repository) {
+        this.repository = repository;
+    }
 
     @GetMapping("/")
     public String home(Model model) {
 
-        studentList.sort((a,b) -> Double.compare(b.getAverage(), a.getAverage()));
         model.addAttribute("student", new Student());
-        model.addAttribute("students", studentList);
+        model.addAttribute("students", repository.findAll());
+
         return "index";
     }
 
     @PostMapping("/add")
     public String addStudent(@ModelAttribute Student student) {
-        studentList.add(student);
+        repository.save(student);
         return "redirect:/";
     }
 
     @GetMapping("/delete")
-    public String deleteStudent(@RequestParam int index){
-        studentList.remove(index);
-        return"redirect:/";
+    public String deleteStudent(@RequestParam Long id){
+        repository.deleteById(id);
+        return "redirect:/";
     }
 
     @GetMapping("/students")
     public String students(Model model) {
-    studentList.sort((a,b) -> Double.compare(b.getAverage(), a.getAverage()));
-    model.addAttribute("students", studentList);
-    return "students";
-}
+        model.addAttribute("students", repository.findAll());
+        return "students";
+    }
 }
