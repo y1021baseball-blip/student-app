@@ -13,30 +13,33 @@ public class HomeController {
         this.repository = repository;
     }
 
+    // トップ画面
     @GetMapping("/")
     public String home(Model model) {
-
         model.addAttribute("student", new Student());
         model.addAttribute("students", repository.findAll());
-
         return "index";
     }
 
+    // 登録
     @PostMapping("/add")
     public String addStudent(@ModelAttribute Student student) {
         repository.save(student);
-        return "redirect:/";
+        return "redirect:/students";
     }
 
-    @GetMapping("/delete")
-    public String deleteStudent(@RequestParam Long id){
-        repository.deleteById(id);
-        return "redirect:/";
-    }
-
+    // 一覧（必要なら）
     @GetMapping("/students")
-    public String students(Model model) {
+    public String list(Model model) {
         model.addAttribute("students", repository.findAll());
         return "students";
     }
+
+    // 削除
+    @GetMapping("/delete")
+public String deleteStudent(@RequestParam Long id) {
+    repository.deleteById(id);
+    return "redirect:/students"; 
+}
+    
 }

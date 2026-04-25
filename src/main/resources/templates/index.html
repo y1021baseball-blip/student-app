@@ -10,11 +10,11 @@
 
 <form th:action="@{/add}" method="post" th:object="${student}">
     名前: <input type="text" th:field="*{name}" /><br>
-    国語: <input type="number" th:field="*{japanese}" /><br>
-    数学: <input type="number" th:field="*{math}" /><br>
-    英語: <input type="number" th:field="*{english}" /><br>
-    理科: <input type="number" th:field="*{science}" /><br>
-    社会: <input type="number" th:field="*{social}" /><br>
+    国語: <input type="number" th:field="*{japanese}" required /><br>
+    数学: <input type="number" th:field="*{math}"required  /><br>
+    英語: <input type="number" th:field="*{english}" required /><br>
+    理科: <input type="number" th:field="*{science}" required /><br>
+    社会: <input type="number" th:field="*{social}" required /><br>
     <button type="submit">登録</button>
 </form>
 

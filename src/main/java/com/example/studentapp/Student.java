@@ -9,13 +9,21 @@ public class Student {
     private Long id;
     
     private String name;
-    private int japanese;
-    private int math;
-    private int english;
-    private int science;
-    private int social;
+    private Integer japanese;
+    private Integer math;
+    private Integer english;
+    private Integer science;
+    private Integer social;
 
     public Student() {
+    }
+
+    public Long getId() {
+    return id;
+    }
+
+    public void setId(Long id) {
+    this.id = id;
     }
 
     public String getName() {
@@ -26,42 +34,48 @@ public class Student {
         this.name = name;
     }
 
-    public int getJapanese(){
+    public Integer getJapanese(){
         return japanese;
     }
-    public void setJapanese(int japanese){
+    public void setJapanese(Integer japanese){
         this.japanese = japanese;
     }
 
 
-    public int getMath(){
+    public Integer getMath(){
         return math;
     }
-    public void setMath(int math){
+    public void setMath(Integer math){
         this.math = math;
     }
     
-    public int getEnglish(){
+    public Integer getEnglish(){
         return english;
     }
-    public void setEnglish(int english){
+    public void setEnglish(Integer english){
         this.english = english;
     }
 
-    public int getScience(){
+    public Integer getScience(){
         return science;
     }
-    public void setScience(int science){
+    public void setScience(Integer science){
         this.science = science;
     }
-    public int getSocial(){
+    public Integer getSocial(){
         return social;
     }
-    public void setSocial(int social){
+    public void setSocial(Integer social){
         this.social = social;
     }
 
     public double getAverage(){
-        return(japanese +math + english +science+ social)/5.0;
+    int j = (japanese != null) ? japanese : 0;
+    int m = (math != null) ? math : 0;
+    int e = (english != null) ? english : 0;
+    int s = (science != null) ? science : 0;
+    int so = (social != null) ? social : 0;
+
+    return (j + m + e + s + so) / 5.0;
     }
 }
