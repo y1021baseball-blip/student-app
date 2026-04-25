@@ -8,8 +8,18 @@
 <h1>学生一覧</h1>
 
 <ul>
-    <li th:each="name : ${students}" th:text="${name}"></li>
-    <span th:text="${s.average}"></span>
+    <li th:each="s, stat : ${students}">
+        順位:<span th:text="${stat.index + 1}"></span>位<br>
+        名前:<span th:text="${s.name}"></span><br>
+
+        国語:<span th:text="${s.japanese}"></span>
+        数学:<span th:text="${s.math}"></span>
+        英語:<span th:text="${s.english}"></span>
+        理科:<span th:text="${s.science}"></span>
+        社会:<span th:text="${s.social}"></span>
+
+        平均:<span th:text="${s.average}"></span>
+    </li>
 </ul>
 
 </body>

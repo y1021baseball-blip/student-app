@@ -32,4 +32,11 @@ public class HomeController {
         studentList.remove(index);
         return"redirect:/";
     }
+
+    @GetMapping("/students")
+    public String students(Model model) {
+    studentList.sort((a,b) -> Double.compare(b.getAverage(), a.getAverage()));
+    model.addAttribute("students", studentList);
+    return "students";
+}
 }
