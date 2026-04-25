@@ -21,6 +21,7 @@
 <hr>
 
 <h2>学生一覧</h2>
+<a href="/students">一覧を見る</a>
 <ul>
     <li th:each="s, stat : ${students}">
         順位:<span th:text ="${stat.index +1}"></span>位<br>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>学生一覧</title>
+</head>
+<body>
+
+<h1>学生一覧</h1>
+
+<ul>
+    <li th:each="name : ${students}" th:text="${name}"></li>
+    <span th:text="${s.average}"></span>
+</ul>
+
+</body>
+</html>
