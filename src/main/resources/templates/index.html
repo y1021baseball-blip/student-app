@@ -22,22 +22,7 @@
 
 <h2>学生一覧</h2>
 <a href="/students">一覧を見る</a>
-<ul>
-    <li th:each="s, stat : ${students}">
-        順位:<span th:text ="${stat.index +1}"></span>位<br>
-        名前:<span th:text="${s.name}"></span> <br>
-        
-        国語:<span th:text="${s.japanese}"></span>
-        数学:<span th:text="${s.math}"></span>
-        英語:<span th:text="${s.english}"></span>
-        理科:<span th:text="${s.science}"></span>
-        社会:<span th:text="${s.social}"></span>
 
-        平均:<span th:text="${s.average}"></span>
-
-        <a th:href="@{/delete(index=${stat.index})}">削除</a>
-    </li>
-</ul>
 
 </body>
 </html>

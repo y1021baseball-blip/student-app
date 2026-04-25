@@ -19,6 +19,7 @@
         社会:<span th:text="${s.social}"></span>
 
         平均:<span th:text="${s.average}"></span>
+        <a th:href="@{/delete(index=${stat.index})}">削除</a>
     </li>
 </ul>
 
