@@ -1,6 +1,13 @@
 package com.example.studentapp;
+import jakarta.persistence.*;
 
+@Entity
 public class Student {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     private String name;
     private int japanese;
     private int math;
